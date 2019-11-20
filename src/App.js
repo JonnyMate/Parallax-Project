@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons";
+import AnimatedGradient from "./components/AnimatedGradient";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Parallax
+          pages={2}
+          scrolling={true}
+          vertical
+          ref={ref => (this.parallax = ref)}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <ParallaxLayer offset={0} speed={0.5}>
+            <AnimatedGradient />
+          </ParallaxLayer>
+          <ParallaxLayer offset={1} speed={0.5}>
+            <h1>LOL</h1>
+          </ParallaxLayer>
+        </Parallax>
+      </div>
+    );
+  }
 }
-
 export default App;
